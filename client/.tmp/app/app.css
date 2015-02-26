@@ -1,0 +1,31 @@
+html,
+body {
+  background-color: transparent;
+}
+.main-wrapper {
+  overflow: hidden;
+}
+.shell {
+  margin: 10px;
+  background-color: white;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.shell.maximized {
+  margin: 0;
+  border-radius: 0;
+}
+.shell .titlebar {
+  -webkit-user-select: none;
+  width: 100%;
+  height: 32px;
+  background-color: #0288d1;
+  padding: 0 10px;
+}
+.shell .titlebar .content {
+  -webkit-app-region: drag;
+  height: 100%;
+}
+.shell .titlebar i {
+  color: #ffffff;
+}

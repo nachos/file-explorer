@@ -1,0 +1,41 @@
+<div ng-controller="ShellController" class="shell md-whiteframe-z1" ng-class="{ maximized: isFullScreen}" flex>
+  <div class="titlebar" layout="row" layout-align="space-between center">
+    <div flex class="content">
+    </div>
+    <div layout="row" layout-align="space-between end">
+      <md-button md-no-ink flex ng-click="hide()">
+        <i class="mdi mdi-minus"></i>
+      </md-button>
+      <md-button md-no-ink flex ng-click="toggleFullscreen()">
+        <i class="mdi mdi-checkbox-blank-outline" ng-hide="isFullScreen"></i>
+        <i class="mdi mdi-image-filter-none" ng-show="isFullScreen"></i>
+      </md-button>
+      <md-button flex ng-click="close()">
+        <i class="mdi mdi-close"></i>
+      </md-button>
+    </div>
+  </div>
+  <div layout="row">
+    <div flex="75">
+      <md-toolbar class="md-tall">
+        <span flex></span>
+
+        <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
+          <span class="md-flex">My Files</span>
+        </h2>
+      </md-toolbar>
+      <div flex>
+        <span>elad</span>
+      </div>
+    </div>
+    <div flex>
+      <md-toolbar class="md-tall">
+        <span flex></span>
+
+        <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
+          <span class="md-flex">wahat</span>
+        </h2>
+      </md-toolbar>
+    </div>
+  </div>
+</div>

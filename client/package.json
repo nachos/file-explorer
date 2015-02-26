@@ -1,0 +1,15 @@
+{
+  "name": "file-explorer",
+  "version": "0.0.0",
+  "description": "Nachos default file explorer",
+  "main": "index.html",
+  "window": {
+    "toolbar": false,
+    "frame": false,
+    "position": "center",
+    "fullscreen": false,
+    "resizable": true,
+    "transparent": true
+  }
+}
+

@@ -7,14 +7,13 @@ var nw = require('nw');
 var wiredep = require('wiredep').stream;
 var runSequence = require('run-sequence');
 var del = require('del');
+var stylish = require('jshint-stylish');
 
 /** Gulp dependencies */
 var gutil = require('gulp-util');
-var inject = require("gulp-inject");
+var inject = require('gulp-inject');
 var less = require('gulp-less');
-
-/** Local dependencies */
-// var config sheker
+var jshint = require('gulp-jshint');
 
 /** Grab-bag of build configuration. */
 var config = {};
@@ -23,7 +22,16 @@ var config = {};
 
 /** Gulp tasks */
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['test']);
+
+gulp.task('test', ['jshint']);
+
+gulp.task('jshint', function () {
+  gulp.src('./client/**/*.js')
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter(stylish))
+    .pipe(jshint.reporter('fail'));
+});
 
 gulp.task('nw', function (cb) {
   var process = spawn(nw.findpath(), ['client']);

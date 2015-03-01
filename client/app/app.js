@@ -1,10 +1,13 @@
 'use strict';
 
-angular.module('fileExplorerApp', ['ui.router'])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+angular.module('fileExplorerApp', ['ui.router', 'ngMaterial'])
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
     $urlRouterProvider
-      .otherwise('/');
 
+      .otherwise('/');
+    $mdThemingProvider.theme('default')
+      .primaryPalette('light-blue')
+      .accentPalette('orange');
   })
 
 

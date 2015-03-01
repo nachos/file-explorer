@@ -4,12 +4,14 @@
   "description": "Nachos default file explorer",
   "main": "index.html",
   "window": {
-    "toolbar": false,
+    "toolbar": true,
     "frame": false,
     "position": "center",
     "fullscreen": false,
     "resizable": true,
-    "transparent": true
+    "transparent": true,
+    "width": 1000,
+    "height": 800
   }
 }
 

@@ -5,6 +5,26 @@ body {
 .main-wrapper {
   overflow: hidden;
 }
+.files {
+  -webkit-user-select: none;
+}
+.files .file {
+  transition: all .5s ease;
+  cursor: default;
+}
+.files .file.selected {
+  background-color: #B3E5FC;
+}
+.files .file .tile {
+  background-color: white;
+  height: 80px;
+  margin: 0;
+}
+.files .file .text {
+  margin-top: 8px;
+  font-size: 0.8em;
+  text-align: center;
+}
 .shell {
   margin: 10px;
   background-color: white;
@@ -19,7 +39,7 @@ body {
   -webkit-user-select: none;
   width: 100%;
   height: 32px;
-  background-color: #0288d1;
+  background-color: #0288D1;
   padding: 0 10px;
 }
 .shell .titlebar .content {
@@ -28,4 +48,14 @@ body {
 }
 .shell .titlebar i {
   color: #ffffff;
+}
+.shell .main-view {
+  background-color: #FAFAFA;
+}
+.shell .side-panel {
+  width: 384px;
+  background-color: #F5F5F5;
+}
+.shell .side-panel.tool-bar {
+  background-color: #039BE5;
 }

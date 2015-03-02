@@ -3,37 +3,17 @@
     <div flex class="content">
     </div>
     <div layout="row" layout-align="space-between end">
-      <md-button md-no-ink flex ng-click="hide()">
+      <md-button flex ng-click="hide()">
         <i class="mdi mdi-minus"></i>
       </md-button>
-      <md-button md-no-ink flex ng-click="toggleFullscreen()">
+      <md-button flex ng-click="toggleFullscreen()">
         <i class="mdi mdi-checkbox-blank-outline" ng-hide="isFullScreen"></i>
         <i class="mdi mdi-image-filter-none" ng-show="isFullScreen"></i>
       </md-button>
-      <md-button flex ng-click="close()">
+      <md-button flex ng-click="close()" md-ink-ripple="#ff0000">
         <i class="mdi mdi-close"></i>
       </md-button>
     </div>
   </div>
-  <div layout="column" flex>
-      <md-toolbar class="md-tall" layout="row">
-        <div flex layout="column">
-          <span flex></span>
-
-          <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
-            <span class="md-flex">My Files</span>
-          </h2>
-        </div>
-        <div class="side-panel tool-bar md-primary md-hue-2">
-          <span>side</span>
-        </div>
-      </md-toolbar>
-      <div flex layout="row">
-        <div flex ui-view class="main-view">
-        </div>
-        <div class="side-panel">
-          <span>s</span>
-        </div>
-      </div>
-  </div>
+  <div ng-include="'app/content/content.html'" flex layout="column"></div>
 </div>

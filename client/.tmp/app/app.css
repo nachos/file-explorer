@@ -30,6 +30,7 @@ body {
   background-color: white;
   border-radius: 3px;
   overflow: hidden;
+  background-color: #FAFAFA;
 }
 .shell.maximized {
   margin: 0;
@@ -49,13 +50,10 @@ body {
 .shell .titlebar i {
   color: #ffffff;
 }
-.shell .main-view {
-  background-color: #FAFAFA;
-}
-.shell .side-panel {
+.side-panel {
   width: 384px;
   background-color: #F5F5F5;
 }
-.shell .side-panel.tool-bar {
+.side-panel .tool-bar {
   background-color: #039BE5;
 }

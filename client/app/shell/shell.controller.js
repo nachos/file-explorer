@@ -18,6 +18,4 @@ angular.module('fileExplorerApp')
   $scope.hide = function (){
     nwin.minimize()
   }
-
-
 }]);

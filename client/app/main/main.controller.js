@@ -1,21 +1,20 @@
 'use strict';
 
 angular.module('fileExplorerApp')
-  .controller('MainController', ['$scope', function ($scope) {
+  .controller('MainController', ['$scope', '$rootScope', function ($scope, $rootScope) {
     var fs = require('fs');
     var async = require('async');
     var path = require('path');
     var _ = require('lodash');
-    var exec = require('child_process').execFile;
     var shell = require('nw.gui').Shell;
 
     $scope.files = [];
 
-    var dir = 'E:\\test';
+    $scope.dir = 'E:\\test';
 
-    fs.readdir(dir, function (err, files) {
+    fs.readdir($scope.dir, function (err, files) {
       async.map(files, function (file, cb) {
-        var filePath = path.join(dir, file);
+        var filePath = path.join($scope.dir, file);
         fs.stat(filePath, function (err, stat) {
           if (err) {
             return cb(err);
@@ -23,7 +22,7 @@ angular.module('fileExplorerApp')
 
           return cb(null, {
             name: file,
-            dir: dir,
+            dir: $scope.dir,
             path: filePath,
             stat: stat,
             isFolder: stat.isDirectory()
@@ -43,6 +42,7 @@ angular.module('fileExplorerApp')
     $scope.selectItem = function (item){
       if ($scope.selectedItem !== item) {
         $scope.selectedItem = item;
+        $rootScope.$broadcast('ItemSelected', item);
       }
       else {
         $scope.selectedItem = undefined;
@@ -52,4 +52,5 @@ angular.module('fileExplorerApp')
     $scope.openFile = function (file) {
       shell.openItem(file.path);
     };
+
   }]);

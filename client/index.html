@@ -13,7 +13,7 @@
   <!-- endinjector -->
 </head>
 <body>
-<div ui-view layout="column" layout-fill class="main-wrapper">
+<div ng-include="'app/shell/shell.html'" layout="column" layout-fill class="main-wrapper">
 </div>
 <!-- bower:js -->
 <script src="bower_components/angular/angular.js"></script>
@@ -24,10 +24,10 @@
 <!-- endbower -->
 <script src="app/app.js"></script>
 <!-- injector:js -->
+<script src="app/content/content.controller.js"></script>
 <script src="app/main/main.controller.js"></script>
-<script src="app/main/main.js"></script>
 <script src="app/shell/shell.controller.js"></script>
-<script src="app/shell/shell.js"></script>
+<script src="app/side-panel/side-panel.controller.js"></script>
 <!-- endinjector -->
 </body>
 </html>

@@ -5,7 +5,17 @@
     transition: all .5s ease;
     cursor: default;
     &.selected{
-      background-color: #B3E5FC;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+
+      .text{
+        padding: 4px;
+        margin-top: 0;
+        background-color: #616161;
+        color: white;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
     }
 
     .tile{
@@ -15,9 +25,14 @@
     }
 
     .text{
+      transition: all .5s ease;
       margin-top: 8px;
       font-size: 0.8em;
       text-align: center;
+      word-break:break-all;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
 }

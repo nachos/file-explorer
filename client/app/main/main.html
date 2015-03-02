@@ -17,7 +17,7 @@
           <i class="mdi mdi-folder"></i>
         </div>
       </md-card>
-      <div class="text">
+      <div class="text" ng-class="{ 'md-whiteframe-z2': selectedItem == file }">
         <span>{{ file.name }}</span>
       </div>
     </div>

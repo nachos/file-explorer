@@ -1,11 +1,15 @@
 <div ng-controller="SideBarController" class="side-panel" flex>
   <md-toolbar class="md-tall tool-bar" layout="row">
-    <div flex layout="column">
-      <span flex></span>
-
-      <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
-        <span class="md-flex">{{ item.name }}</span>
-      </h2>
+    <div flex layout="column" layout-align="space-between start">
+      <div class="md-toolbar-tools">
+        <span>asdf</span>
+      </div>
+      <div class="md-toolbar-tools md-toolbar-tools-bottom">
+        <div layout="column">
+          <span class="item-name">{{ item.name }}</span>
+          <span class="item-description" >{{ item.stat.ctime }}</span>
+        </div>
+      </div>
     </div>
   </md-toolbar>
   <div layout="column">

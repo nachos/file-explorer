@@ -1,10 +1,13 @@
-<div ng-controller="MainController" layout="column" flex>
-  <md-toolbar class="md-tall" layout="row">
+<div ng-controller="MainController" layout="column" flex class="main">
+  <md-toolbar class="md-tall tool-bar" layout="row">
     <div flex layout="column">
       <span flex></span>
 
       <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
-        <span class="md-flex">{{ dir }}</span>
+        <span ng-repeat="dir in directories" ng-click="goToDir($index)">
+          <span class="folder">{{ dir }}</span>
+          <span ng-if="!$last"> > </span>
+        </span>
       </h2>
     </div>
   </md-toolbar>

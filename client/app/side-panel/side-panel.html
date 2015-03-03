@@ -13,6 +13,23 @@
     </div>
   </md-toolbar>
   <div layout="column">
-    <span>asdf</span>
+    <!--<div class="preview"></div>-->
+
+      <md-subheader>Info</md-subheader>
+    <div class="info">
+      <div layout="row" class="item location">
+        <span flex="30" class="title">Location</span>
+        <span flex class="text">{{ item.dir }}</span>
+      </div>
+      <div layout="row" class="item modified">
+        <span flex="30" class="title">Modified</span>
+        <span flex class="text">{{ item.stat.mtime }}</span>
+      </div>
+      <div layout="row" class="item size">
+        <span flex="30" class="title">Size</span>
+        <span flex class="text">{{ item.stat.size | nchBytes }}</span>
+      </div>
+    </div>
+    <md-divider></md-divider>
   </div>
 </div>

@@ -42,6 +42,7 @@ angular.module('fileExplorerApp')
     $scope.selectItem = function (item){
       if ($scope.selectedItem !== item) {
         $scope.selectedItem = item;
+        console.log(item.stat);
         $rootScope.$broadcast('ItemSelected', item);
       }
       else {

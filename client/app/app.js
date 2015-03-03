@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fileExplorerApp', ['ui.router', 'ngMaterial'])
+angular.module('fileExplorerApp', ['ngMaterial'])
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('light-blue')

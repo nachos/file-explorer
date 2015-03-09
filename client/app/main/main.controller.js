@@ -7,6 +7,8 @@ angular.module('fileExplorerApp')
     var path = require('path');
     var _ = require('lodash');
     var shell = require('nw.gui').Shell;
+    var nativeApi = require('native-api');
+    var nativeFile = nativeApi.file;
 
     var buildFolder = function(directory){
       $scope.files = [];
@@ -14,6 +16,7 @@ angular.module('fileExplorerApp')
       fs.readdir(directory, function (err, files) {
         async.map(files, function (file, cb) {
           var filePath = path.join(directory, file);
+
           fs.stat(filePath, function (err, stat) {
             if (err) {
               return cb(err);
@@ -24,6 +27,7 @@ angular.module('fileExplorerApp')
               dir: directory,
               path: filePath,
               stat: stat,
+              nativeStat: nativeFile.getFileStats(filePath),
               isFolder: stat.isDirectory()
             })
           });
@@ -31,6 +35,13 @@ angular.module('fileExplorerApp')
           results = _.sortBy(results, function(result){
             if (result){
               return !result.isFolder;
+            }
+          });
+
+          // Not filtering well, can't access protected files
+          results = _.filter(results, function(result){
+            if(result){
+              return result;
             }
           });
           $scope.files = results;
@@ -53,13 +64,6 @@ angular.module('fileExplorerApp')
       }
     };
 
-    $scope.currentDir = 'E:';
-
-    buildFolder($scope.currentDir);
-
-    buildDirectories($scope.currentDir);
-
-
     $scope.navToDir = function(index){
       var newPath = "./";
       for (var i = 0; i <= index; i++){
@@ -68,6 +72,8 @@ angular.module('fileExplorerApp')
 
       $scope.goToDir(newPath);
     };
+
+    $scope.goToDir('E:');
 
     $scope.selectedItem = undefined;
 

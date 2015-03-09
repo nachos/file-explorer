@@ -1,12 +1,25 @@
 <div ng-controller="MainController" layout="column" flex class="main">
-  <md-toolbar class="md-tall tool-bar" layout="row">
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" flex><md-toolbar class="md-tall tool-bar" layout="row">
     <div flex layout="column">
-      <span flex></span>
+      <div class="md-toolbar-tools" layout="row">
+        <i class="mdi mdi-arrow-left" ng-click="toggleSideNav()"></i>
+      </div>
+    </div>
+  </md-toolbar>
+    <div ng-click="goToDir('E:')">E:</div>
+    <div ng-click="goToDir('C:')">C:</div>
+  </md-sidenav>
+  <md-toolbar class="md-tall tool-bar" layout="row" >
+    <div flex layout="column">
+      <div class="md-toolbar-tools" layout="row" layout-align="space-between">
+        <i class="mdi mdi-menu" ng-click="toggleSideNav()"></i>
+        <i class="mdi mdi-dots-vertical"></i>
+      </div>
 
       <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
-        <span ng-repeat="dir in directories" ng-click="goToDir($index)">
-          <span class="folder">{{ dir }}</span>
-          <span ng-if="!$last"> > </span>
+        <span ng-repeat="dir in directories">
+          <span class="folder" ng-click="navToDir($index)">{{ dir }}</span>
+          <span ng-if="!$last"><i class="mdi mdi-chevron-right"></i></span>
         </span>
       </h2>
     </div>

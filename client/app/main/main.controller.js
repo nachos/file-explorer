@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fileExplorerApp')
-  .controller('MainController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+  .controller('MainController', ['$scope', '$rootScope', '$mdSidenav', function ($scope, $rootScope, $mdSidenav) {
     var fs = require('fs');
     var async = require('async');
     var path = require('path');
@@ -30,7 +30,6 @@ angular.module('fileExplorerApp')
         }, function (err, results) {
           results = _.sortBy(results, function(result){
             if (result){
-              console.log(result);
               return !result.isFolder;
             }
           });
@@ -40,21 +39,34 @@ angular.module('fileExplorerApp')
       })
     };
 
-    var dir = 'E:';
+    var buildDirectories = function(newPath){
+      $scope.directories = newPath.split(path.sep);
+    };
 
-    buildFolder(dir);
+    $scope.goToDir = function(newPath){
+      if($scope.currentDir !== newPath) {
+        buildFolder(newPath);
 
-    $scope.directories = dir.split(path.sep);
+        buildDirectories(newPath);
 
-    $scope.goToDir = function(index){
-      var newPath = "";
+        $scope.currentDir = newPath;
+      }
+    };
+
+    $scope.currentDir = 'E:';
+
+    buildFolder($scope.currentDir);
+
+    buildDirectories($scope.currentDir);
+
+
+    $scope.navToDir = function(index){
+      var newPath = "./";
       for (var i = 0; i <= index; i++){
         newPath = path.join(newPath, $scope.directories[i]);
       }
 
-      buildFolder(newPath);
-
-      $scope.directories = newPath.split(path.sep);
+      $scope.goToDir(newPath);
     };
 
     $scope.selectedItem = undefined;
@@ -71,11 +83,15 @@ angular.module('fileExplorerApp')
 
     $scope.openFile = function (file) {
       if(file.isFolder){
-        buildFolder(file.path);
+        $scope.goToDir(file.path);
       }
       else{
         shell.openItem(file.path);
       }
+    };
+
+    $scope.toggleSideNav = function(){
+      $mdSidenav('left').toggle();
     };
 
   }]);

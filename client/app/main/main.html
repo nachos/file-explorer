@@ -1,49 +1,5 @@
-<div ng-controller="MainController" layout="column" flex class="main">
-  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" flex>
-    <md-toolbar class="md-tall tool-bar" layout="row">
-    <div flex layout="column">
-      <div class="md-toolbar-tools" layout="row">
-        <i class="mdi mdi-arrow-left" ng-click="toggleSideNav()"></i>
-      </div>
-    </div>
-  </md-toolbar>
-    <div layout="column">
-      <md-subheader>Drives</md-subheader>
-      <md-button aria-label="drive" ng-click="goToDir('E:')">E:</md-button>
-      <md-button aria-label="drive" ng-click="goToDir('C:')">C:</md-button>
-    </div>
-  </md-sidenav>
-  <md-toolbar class="md-tall tool-bar" layout="row" >
-    <div flex layout="column">
-      <div class="md-toolbar-tools" layout="row" layout-align="space-between">
-        <md-button aria-label="side nav">
-          <i class="mdi mdi-menu" ng-click="toggleSideNav()"></i>
-        </md-button>
-        <md-button aria-label="configuration">
-          <i class="mdi mdi-dots-vertical"></i>
-        </md-button>
-      </div>
-
-      <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
-        <span ng-repeat="dir in directories">
-          <md-button class="folder" ng-click="navToDir($index)">{{ dir }}</md-button>
-          <span ng-if="!$last"><i class="mdi mdi-chevron-right"></i></span>
-        </span>
-      </h2>
-    </div>
-  </md-toolbar>
-  <div layout="row" layout-wrap layout-padding class="files">
-    <div flex="25" ng-repeat="file in files track by file.path" class="file"
-         ng-click="selectItem(file)" ng-dblclick="openFile(file)"
-         ng-class="{ selected: selectedItem == file }">
-      <md-card class="tile" ng-class="{ 'md-whiteframe-z2': selectedItem == file }">
-        <md-button ng-if="file.isFolder" layout="column" layout-align="center center" flex aria-label="item">
-          <i class="mdi mdi-folder"></i>
-        </md-button>
-      </md-card>
-      <div class="text" ng-class="{ 'md-whiteframe-z2': selectedItem == file }">
-        <span>{{ file.name }}</span>
-      </div>
-    </div>
-  </div>
+<div layout="column" flex class="main">
+  <div ng-include="'app/main/side-nav/side-nav.html'"></div>
+  <div ng-include="'app/main/toolbar/toolbar.html'"></div>
+  <div ui-view flex layout="column" class="files"></div>
 </div>

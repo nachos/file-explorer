@@ -1,0 +1,38 @@
+.files{
+  -webkit-user-select: none;
+  overflow: auto;
+  .file{
+    transition: all .3s ease;
+    cursor: default;
+    &.selected{
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+
+      .text{
+        padding: 4px;
+        margin-top: 0;
+        background-color: #616161;
+        color: white;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+    }
+
+    .tile{
+      background-color: white;
+      height: @increment * 2;
+      margin: 0;
+    }
+
+    .text{
+      transition: all .3s ease;
+      margin-top: 8px;
+      font-size: 0.8em;
+      text-align: center;
+      word-break:break-all;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}

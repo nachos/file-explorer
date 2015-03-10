@@ -1,4 +1,4 @@
-<div ng-controller="ShellController" class="shell md-whiteframe-z1" ng-class="{ maximized: isFullScreen}" flex layout="column">
+<div class="shell md-whiteframe-z1" ng-class="{ maximized: isFullScreen}" flex layout="column" >
   <div class="titlebar" layout="row" layout-align="space-between center">
     <div flex class="content">
     </div>
@@ -15,5 +15,5 @@
       </md-button>
     </div>
   </div>
-  <div ng-include="'app/content/content.html'" flex layout="column"></div>
+  <div ui-view flex layout="column"></div>
 </div>

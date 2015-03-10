@@ -35,15 +35,18 @@ gulp.task('jshint', function () {
 });
 
 gulp.task('nw', function (cb) {
-  var process = spawn(nw.findpath(), ['client']);
+  var nwProcess = spawn(nw.findpath(), ['client']);
 
-  process.on('error', cb);
-  process.on('close', function (code) {
+  nwProcess.on('error', cb);
+  nwProcess.on('close', function (code) {
     if (code) {
       cb(new Error('child process exited with code ' + code))
     }
 
     cb();
+
+    // Close gulp
+    process.exit(1);
   });
 });
 

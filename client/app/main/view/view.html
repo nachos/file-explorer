@@ -1,0 +1,14 @@
+<div layout="row" layout-wrap layout-padding>
+  <div flex="25" ng-repeat="file in files track by file.path" class="file"
+       ng-click="selectItem(file)" ng-dblclick="openFile(file)"
+       ng-class="{ selected: selectedItem == file }">
+    <md-card class="tile" ng-class="{ 'md-whiteframe-z2': selectedItem == file }">
+      <md-button ng-if="file.isFolder" layout="column" layout-align="center center" flex aria-label="item">
+        <i class="mdi mdi-folder"></i>
+      </md-button>
+    </md-card>
+    <div class="text" ng-class="{ 'md-whiteframe-z2': selectedItem == file }">
+      <span>{{ file.name }}</span>
+    </div>
+  </div>
+</div>

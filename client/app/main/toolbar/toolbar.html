@@ -1,0 +1,19 @@
+<md-toolbar class="md-tall tool-bar" layout="row" ng-controller="MainToolbarController">
+  <div flex layout="column">
+    <div class="md-toolbar-tools" layout="row" layout-align="space-between">
+      <md-button aria-label="side nav">
+        <i class="mdi mdi-menu" ng-click="toggleSideNav()"></i>
+      </md-button>
+      <md-button aria-label="configuration">
+        <i class="mdi mdi-dots-vertical"></i>
+      </md-button>
+    </div>
+
+    <h2 class="md-toolbar-tools md-toolbar-tools-bottom">
+        <span ng-repeat="dir in directories">
+          <md-button class="folder" ng-click="navToDir($index)">{{ dir }}</md-button>
+          <span ng-if="!$last"><i class="mdi mdi-chevron-right"></i></span>
+        </span>
+    </h2>
+  </div>
+</md-toolbar>

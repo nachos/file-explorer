@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('fileExplorerApp')
-  .controller('ShellController', ['$scope', function ($scope) {
+  .controller('ShellController', ['$scope', function ($scope, $window) {
   var ngui = require('nw.gui');
   var nwin = ngui.Window.get();
   $scope.isFullScreen = false;
 
   $scope.close = function () {
-    window.close();
+    nwin.close();
   };
 
   $scope.toggleFullscreen = function (){

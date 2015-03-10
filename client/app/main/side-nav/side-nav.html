@@ -1,0 +1,16 @@
+<div ng-controller="MainSideNavController">
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" flex>
+    <md-toolbar class="md-tall tool-bar" layout="row">
+      <div flex layout="column">
+        <div class="md-toolbar-tools" layout="row">
+          <i class="mdi mdi-arrow-left" ng-click="toggleSideNav()"></i>
+        </div>
+      </div>
+    </md-toolbar>
+    <div layout="column">
+      <md-subheader>Drives</md-subheader>
+      <md-button aria-label="drive" ng-click="goToDir('E:')">E:</md-button>
+      <md-button aria-label="drive" ng-click="goToDir('C:')">C:</md-button>
+    </div>
+  </md-sidenav>
+</div>

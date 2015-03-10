@@ -14,6 +14,7 @@ var gutil = require('gulp-util');
 var inject = require('gulp-inject');
 var less = require('gulp-less');
 var jshint = require('gulp-jshint');
+var livereload = require('gulp-livereload');
 
 /** Grab-bag of build configuration. */
 var config = {};
@@ -53,7 +54,9 @@ gulp.task('serve', function (cb) {
     'inject:css',
     'inject:js',
     'wiredep',
-    'nw',
+    'livereload',
+    ['nw',
+    'watch'],
     cb);
 });
 
@@ -127,6 +130,31 @@ gulp.task('inject:js', function () {
       endtag: '<!-- endinjector -->'
     }))
     .pipe(gulp.dest('client'));
+});
+
+gulp.task('watch', function () {
+  gulp.watch('client/{app,components}/**/*.less', ['less']);
+  gulp.watch('client/{app,components}/**/*.css', ['inject:css']);
+  gulp.watch(['client/{app,components}/**/*.js',
+    '!client/{app,components}/**/*.spec.js',
+    '!client/{app,components}/**/*.mock.js'
+  ], ['inject:js']);
+
+  gulp.watch([
+      '{.tmp,client}/{app,components}/**/*.css',
+      'client/{app,components}/**/*.html',
+      'client/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
+      'client/{app,components}/**/*.js',
+      '!client/{app,components}/**/*.spec.js',
+      '!client/{app,components}/**/*.mock.js'
+    ],
+    function (event) {
+      livereload.changed(event.path);
+    });
+});
+
+gulp.task('livereload', function () {
+  livereload.listen();
 });
 
 gulp.task('clean', ['clean:tmp', 'clean:dist']);

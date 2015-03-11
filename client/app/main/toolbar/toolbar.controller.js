@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fileExplorerApp')
-  .controller('MainToolbarController', function ($scope, $mdSidenav, explorer) {
+  .controller('MainToolbarController', function ($scope, $mdSidenav, $window, explorer) {
     var path = require('path');
 
     var pathChanged = function (event, newPath) {
@@ -26,4 +26,11 @@ angular.module('fileExplorerApp')
     $scope.$on('$destroy', function () {
       changedListener();
     });
+
+    $scope.goBack = function (){
+      $window.history.back();
+    };
+    $scope.goForward = function (){
+      $window.history.forward();
+    };
   });

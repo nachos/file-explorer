@@ -1,14 +1,14 @@
 <div layout="row" layout-wrap layout-padding>
-  <div flex="25" ng-repeat="file in files track by file.path" class="file"
-       ng-click="selectItem(file)" ng-dblclick="openFile(file)"
-       ng-class="{ selected: selectedItem == file }">
-    <md-card class="tile" ng-class="{ 'md-whiteframe-z2': selectedItem == file }">
-      <md-button ng-if="file.isFolder" layout="column" layout-align="center center" flex aria-label="item">
+  <div flex="{{ 5 * Math.floor(100 / itemsPerRow / 5) }}" ng-repeat="item in items track by item.path" class="file"
+       ng-click="selectItem($index)" ng-dblclick="openItem(item)"
+       ng-class="{ selected: selectedItemIndex == $index }">
+    <md-card class="tile" ng-class="{ 'md-whiteframe-z2': selectedItemIndex == $index }">
+      <md-button ng-if="item.isFolder" layout="column" layout-align="center center" flex aria-label="item">
         <i class="mdi mdi-folder"></i>
       </md-button>
     </md-card>
-    <div class="text" ng-class="{ 'md-whiteframe-z2': selectedItem == file }">
-      <span>{{ file.name }}</span>
+    <div class="text" ng-class="{ 'md-whiteframe-z2': selectedItemIndex == $index }">
+      <span>{{ item.name }}</span>
     </div>
   </div>
 </div>

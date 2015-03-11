@@ -1,8 +1,8 @@
 'use strict';
-angular.module('fileExplorerApp', ['ngMaterial', 'ui.router'])
+angular.module('fileExplorerApp', ['ngMaterial', 'ui.router', 'cfp.hotkeys'])
   .config(function ($mdThemingProvider, $urlRouterProvider) {
     $urlRouterProvider
-      .otherwise('/view');
+      .otherwise('/view/c:');
 
     $mdThemingProvider.theme('default')
       .primaryPalette('light-blue')

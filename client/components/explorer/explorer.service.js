@@ -30,5 +30,5 @@ angular.module('fileExplorerApp')
     this.setSelectedItems = setSelectedItems;
     this.getSelectedItems = getSelectedItems;
 
-    setCurrentPath('C:');
+    setCurrentPath('C:\\');
   });

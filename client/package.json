@@ -4,7 +4,7 @@
   "description": "Nachos default file explorer",
   "main": "index.html",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "frame": false,
     "position": "center",
     "fullscreen": false,

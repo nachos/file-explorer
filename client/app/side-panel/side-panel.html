@@ -1,8 +1,10 @@
 <div ng-controller="SideBarController" class="side-panel" flex>
   <md-toolbar class="md-tall tool-bar" layout="row">
     <div flex layout="column" layout-align="space-between start">
-      <div class="md-toolbar-tools">
-        <span></span>
+      <div class="md-toolbar-tools" layout="row" layout-align="end">
+        <md-button ng-click="deleteItem($event)">
+          <i class="mdi mdi-delete"></i>
+        </md-button>
       </div>
       <div class="md-toolbar-tools md-toolbar-tools-bottom">
         <div layout="column">

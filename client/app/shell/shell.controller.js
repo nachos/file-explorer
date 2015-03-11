@@ -11,8 +11,13 @@ angular.module('fileExplorerApp')
   };
 
   $scope.toggleFullscreen = function (){
+    if(!$scope.isFullScreen){
+      nwin.maximize();
+    }
+    else{
+      nwin.unmaximize();
+    }
     $scope.isFullScreen = !$scope.isFullScreen;
-    nwin.toggleFullscreen();
   };
 
   $scope.hide = function (){

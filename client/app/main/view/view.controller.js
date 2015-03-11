@@ -6,7 +6,8 @@ angular.module('fileExplorerApp')
     var async = require('async');
     var path = require('path');
     var _ = require('lodash');
-    var shell = require('nw.gui').Shell;
+    var gui = require('nw.gui');
+    var shell = gui.Shell;
     var nativeApi = require('native-api');
     var nativeFile = nativeApi.file;
     var directory = $stateParams.path;
@@ -80,7 +81,8 @@ angular.module('fileExplorerApp')
       }
     };
 
-    hotkeys.add({
+    hotkeys.bindTo($scope)
+      .add({
       combo: 'right',
       description: 'Select the item on the right of the selected item',
       callback: function () {
@@ -95,7 +97,8 @@ angular.module('fileExplorerApp')
       }
     });
 
-    hotkeys.add({
+    hotkeys.bindTo($scope)
+      .add({
       combo: 'left',
       description: 'Select the item on the left of the selected item',
       callback: function () {
@@ -110,7 +113,8 @@ angular.module('fileExplorerApp')
       }
     });
 
-    hotkeys.add({
+    hotkeys.bindTo($scope)
+      .add({
       combo: 'down',
       description: 'Select the item below the selected item',
       callback: function () {
@@ -125,7 +129,8 @@ angular.module('fileExplorerApp')
       }
     });
 
-    hotkeys.add({
+    hotkeys.bindTo($scope)
+      .add({
       combo: 'up',
       description: 'Select the item on top of the selected item',
       callback: function () {
@@ -139,7 +144,8 @@ angular.module('fileExplorerApp')
       }
     });
 
-    hotkeys.add({
+    hotkeys.bindTo($scope)
+      .add({
       combo: 'enter',
       description: 'Open selected item',
       callback: function () {
@@ -147,7 +153,8 @@ angular.module('fileExplorerApp')
       }
     });
 
-    hotkeys.add({
+    hotkeys.bindTo($scope)
+      .add({
       combo: '+',
       description: 'Increase number of items per row (should be ctrl++ not working for now)',
       callback: function () {
@@ -157,7 +164,8 @@ angular.module('fileExplorerApp')
       }
     });
 
-    hotkeys.add({
+    hotkeys.bindTo($scope)
+      .add({
       combo: 'ctrl+-',
       description: 'Decrease number of items per row',
       callback: function () {
@@ -166,4 +174,13 @@ angular.module('fileExplorerApp')
         }
       }
     });
+
+    hotkeys.bindTo($scope)
+      .add({
+      combo: 'f12',
+      callback: function () {
+        gui.Window.get().showDevTools();
+      }
+    });
+
   });

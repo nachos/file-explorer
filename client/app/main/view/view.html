@@ -1,4 +1,4 @@
-<div layout="row" layout-wrap layout-padding>
+<div layout="row" layout-wrap layout-padding layout-align="space-between">
   <div flex="{{ 5 * Math.floor(100 / itemsPerRow / 5) }}" ng-repeat="item in items track by item.path" class="file"
        ng-click="selectItem($index)" ng-dblclick="openItem(item)"
        ng-class="{ selected: selectedItemIndex == $index }">
@@ -11,4 +11,5 @@
       <span>{{ item.name }}</span>
     </div>
   </div>
+  <div flex ng-hide="items.length % itemsPerRow == 0"></div>
 </div>

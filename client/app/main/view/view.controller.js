@@ -23,8 +23,11 @@ angular.module('fileExplorerApp')
         var itemPath = path.join(directory, item);
 
         fs.stat(itemPath, function (err, stat) {
-          if (err) {
+          /*if (err) {
             return cb(err);
+          }*/
+          if (err) {
+            return cb(null, null);
           }
 
           return cb(null, {
@@ -37,6 +40,10 @@ angular.module('fileExplorerApp')
           })
         });
       }, function (err, results) {
+        results = _.filter(results, function (item) {
+          return !!item;// && !item.nativeStat.errorCode && !item.nativeStat.isSystem;
+        });
+
         results = _.sortBy(results, function (result) {
           if (result) {
             return !result.isFolder;
